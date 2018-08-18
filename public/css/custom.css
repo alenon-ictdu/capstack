@@ -1,0 +1,10 @@
+
+
+.activee {
+    background: #27a9e3;
+    opacity: 1;
+}
+
+.activee .sidebar-link {
+    opacity: 1 !important;
+}

@@ -1,0 +1,39 @@
+.panel {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.border-left {
+    border-left: solid;
+    padding: 10px;
+    background-color: #e9eaebb8;
+}
+
+.zoom {
+    border-radius: 3%;
+    transition: transform .2s;
+    cursor: zoom-in;
+
+}
+
+.zoom:hover {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.1); 
+}
+
+.modal-dialog {
+    
+    width: 720px;
+}
+
+.modal-header {
+    background-color: #222222;
+    padding:16px 16px;
+    color:#FFF;
+    
+ }
+
+ .modal-header > button {
+    color: white;
+ }

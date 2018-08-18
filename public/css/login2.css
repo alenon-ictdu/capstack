@@ -1,0 +1,16 @@
+.alert {
+	border-radius: 25px;
+}
+
+.alert-danger {
+    color: #ffffff;
+    background-color: #c90404;
+    border-color: #c90404;
+    text-align: center;
+}
+
+.alert-success {
+    color: #ffffff;
+    background-color: #3ba252;
+    border-color: #1c9437;
+}

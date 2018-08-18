@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono');
+
+
+#indextable th {
+    cursor: pointer;
+}
+
+.float-right {
+	
+    float:right;
+}
+
+.btn-m-left {
+	margin-left: 10px;
+}
+
+table tr td {
+	text-transform: capitalize;
+}
+
+.form_inline {
+	display: inline;
+}
+
+.qr_div {
+	display: none;
+	margin-left: 60px;
+}
+
+.mono_font {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+}
+
+.btn-print {
+	/* margin-left: 690px; */
+	float:right;
+}
+
+
+    
+.panel-body .list-inline>.searh-form {
+	margin-right: 222px;
+	float: right;
+}
+
+
+
+
+#all-books {
+  display: none;
+}
+
+.multiselect {
+  width: 200px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+  z-index: 1;
+  position: absolute;
+  background-color: #f9f9f9;
+  padding: 5px;
+  width: 300px;
+  height: 400px;
+  overflow: auto;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
+
