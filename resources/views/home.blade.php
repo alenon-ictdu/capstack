@@ -51,6 +51,7 @@
                         <a href="{{ route('book.create') }}" class="btn btn-cyan btn-sm"><i class="fa fa-plus"></i> Add Book</a>
                         <a href="{{ route('backup.book') }}" class="btn btn-cyan btn-sm"><i class="fa fa-download"></i> Backup Database</a>
                         <a href="#" class="btn btn-sm btn-cyan" onclick="printContent('all-books')"><i class="fa fa-print"></i> Print Books Data</a>
+                        <a href="{{ route('select-books') }}" style="float:right" class="btn btn-sm btn-dark">Select a qr to print</a>
                         <button style="float:right" class="btn btn-sm btn-outline-dark" form="qr_print_form" formaction="{{ route('qr.selected.print') }}"><i class="fa fa-print"></i> Print</button>
                           <form id="qr_print_form" method="POST" style="float:right; margin-right: 5px;">
                             {{ csrf_field() }}
@@ -102,7 +103,7 @@
                                       <td title="{{ $book->title }}">{{ $book->title }} @if($book->created_at >= $day7) <span class="badge badge-danger">New</span> @endif</td>
                                       <td title="{{ $book->author }}">{{ (strlen($book->author) >= 30) ? substr($book->author, 0, 30). '...' : $book->author }}</td>
                                       <td>{{ $book->year_published }}</td>    
-                                      <td>@foreach($courses as $row) @if($row->id == $book->course_id){{ $row->name }}@endif @endforeach</td>
+                                      <td>{{ $book->course['name'] }}</td>
                                       <td>@if($book->availability == 1)
                                           <i style="color: #28b779;" class="fas fa-check"></i>
                                           @else
@@ -148,15 +149,15 @@
                                             <!-- print content -->
                                             <div id="qr{{$book->id}}" style="display: none;">
                                               <div style="display: inline-block;font-family: 'Roboto', sans-serif;;padding: 5px;" >
-                                                  <img src="{{ asset('images/spcf-property.png') }}" width="200" style="border-bottom: 1px solid black; padding-bottom: 5px;">
+                                                  <img src="{{ asset('images/spcf-property.png') }}" width="300" style="border-bottom: 1px solid black; padding-bottom: 5px;">
                                                   
                                                   <ul class="list-inline" >
-                                                      <div style="float:left;"><img src="data:image/png;base64, {{base64_encode(QrCode::format('png')->size(200)->generate(url('book/').'/'.$book->id))}} "></div>
+                                                      <div style="float:left;"><img src="data:image/png;base64, {{base64_encode(QrCode::format('png')->size(100)->generate(url('book/').'/'.$book->id))}} "></div>
                                                       <div style="display: inline-block; margin-top: 28px;">
                                                           {{-- <h1 style="font-size: 12px;">ID: {{ $book }}</h1> --}}
-                                                          {{-- <strong>ID No: </strong>{{$book->id}}<br>
+                                                          <strong>ID No: </strong>{{$book->id}}<br>
                                                           <strong>Course: </strong>{{$book->course['name']}}<br>
-                                                          <strong>Year Published: </strong>{{$book->year_published}} --}}
+                                                          <strong>Year Published: </strong>{{$book->year_published}}
                                                       </div>
                                                   </ul> 
                                               </div>

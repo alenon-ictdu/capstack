@@ -37,15 +37,15 @@
 <div id="qr" style="display: none;">
     @foreach($selectedBooks as $book)
     <div style="display: inline-block;font-family: 'IBM Plex Mono', monospace;padding: 5px;">
-        <img src="{{ asset('images/spcf-property.png') }}" width="200" style="border-bottom: 1px solid black; padding-bottom: 5px;">
+        <img src="{{ asset('images/spcf-property.png') }}" width="300" style="border-bottom: 1px solid black; padding-bottom: 5px;">
         
         <ul class="list-inline">
-            <div style="float:left;"><img src="data:image/png;base64, {{base64_encode(QrCode::format('png')->size(200)->generate(url('book/').'/'.$book->id))}} "></div>
+            <div style="float:left;"><img src="data:image/png;base64, {{base64_encode(QrCode::format('png')->size(100)->generate(url('book/').'/'.$book->id))}} "></div>
             <div style="display: inline-block; margin-top: 28px;">
                 {{-- <h1 style="font-size: 12px;">ID: {{ $book }}</h1> --}}
-                {{-- <strong>ID No: </strong>{{$book->id}}<br>
+                <strong>ID No: </strong>{{$book->id}}<br>
                 <strong>Course: </strong>{{$book->course}}<br>
-                <strong>Year Published: </strong>{{$book->year_published}} --}}
+                <strong>Year Published: </strong>{{$book->year_published}}
             </div>
         </ul> 
     </div>

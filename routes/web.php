@@ -15,9 +15,15 @@
 
 
 Route::group(['middleware' => 'prevent-back-history'],function(){
-	Route::get('/', function () {
-    	return redirect()->route('login');
-	});
+	Route::get('/', 'LandingPageController@home')->name('welcome');
+
+	Route::any('/search', 'LandingPageController@search')->name('books-search');
+
+	Route::any('/books/sort-by-year', 'LandingPageController@sortByYear')->name('sort-by-year');
+
+	Route::get('/books/newly-added', 'LandingPageController@newlyAdded')->name('newly-added');
+
+	Route::get('/books/a-z-list', 'LandingPageController@azList')->name('a-z-list');
     
 	//Auth::routes();
 	// Authentication Routes...
@@ -53,6 +59,9 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 	Route::match(['PUT', 'PATCH'], '/book/borrow/update/{id}', 'BookController@updateBorrowBook')->name('update.borrow.book');
 	Route::delete('/book/borrow/{id}', 'BookController@destroyBorrowBook')->name('destroy.borrow.book');
 	Route::get('borrowers', 'BookController@viewBorrowers')->name('view.borrowers');
+
+	Route::get('/book/print-selected-books', 'BookController@selectBooks')->name('select-books');
+	Route::post('/book/print-selected-books', 'BookController@printSelectedBookss')->name('print-selected-books');
 
 	Route::get('/book/printbooks', 'BookController@printBooks')->name('books.print');
 	Route::post('/book/printselectedbooks', 'BookController@printSelectedBooks')->name('qr.selected.print');

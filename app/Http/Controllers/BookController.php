@@ -475,6 +475,48 @@ class BookController extends Controller
 
     }
 
+    public function selectBooks() {
+        $books = Book::all();
+        return view('books.select_book')
+            ->with('books', $books);
+    }
+
+    public function printSelectedBookss(Request $request) {
+        $html = '';
+        $selectedData = [];
+        $x = 0;
+        if ($request->ajax()) {
+            // print_r($_POST['selectedData'][0]);
+            $dataLength = count($_POST['selectedData']);
+            for ($i=0; $i < $dataLength; $i++) { 
+                // echo('id = '. $_POST['selectedData'][$i]['id'] . 'quantity = '. $_POST['selectedData'][$i]['quantity']);
+                /*$html .= "<div style='display: inline-block;font-family: 'Roboto', sans-serif;;padding: 5px;'><img src=".{{ asset('images/spcf-property.png') }}." width='300' style='border-bottom: 1px solid black; padding-bottom: 5px;'></div>";*/
+
+                    /*<div style="display: inline-block;font-family: 'Roboto', sans-serif;;padding: 5px;">
+                        <img src="{{ asset('images/spcf-property.png') }}" width="300" style="border-bottom: 1px solid black; padding-bottom: 5px;">
+                        
+                        <ul class="list-inline" >
+                            <div style="float:left;"><img src="data:image/png;base64, {{base64_encode(QrCode::format('png')->size(100)->generate(url('book/').'/'.$book->id))}} "></div>
+                            <div style="display: inline-block; margin-top: 28px;">
+                                {{-- <h1 style="font-size: 12px;">ID: {{ $book }}</h1> --}}
+                                <strong>ID No: </strong>{{$book->id}}<br>
+                                <strong>Course: </strong>{{$book->course['name']}}<br>
+                                <strong>Year Published: </strong>{{$book->year_published}}
+                            </div>
+                        </ul> 
+                    </div>*/
+                $book = Book::find($_POST['selectedData'][$i]['id']);
+                $selectedData[$x++] = [
+                    'id' => $_POST['selectedData'][$i]['id'],
+                    'quantity' => $_POST['selectedData'][$i]['quantity'],
+                    'course' => $book->course['name'],
+                    'year_published' => $book->year_published
+                ];
+            }
+
+            return json_decode(json_encode($selectedData));
+        }
+    }
 
 
 }

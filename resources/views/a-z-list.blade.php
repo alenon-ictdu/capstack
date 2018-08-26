@@ -2,29 +2,7 @@
 
 @section('content')
 
-<span class="top-book">@if(isset($query)){{ $query }} @else Books @endif</span>
-
-@if(!Request::is('search*'))
-  <form action="{{ route('sort-by-year') }}" id="sort-form" style="display: none;">
-    {{csrf_field()}}
-    <input type="hidden" name="sort_i" value="@if(isset($sort)) asc @endif">          
-      
-  </form>
-  <button form="sort-form" class="btn-sort">Year <i class="@if(isset($sort)) fas fa-sort-amount-up @else fas fa-sort-amount-down @endif"></i></button>
-@endif
-
-@if(isset($searchMessage))
-<div class="no-result">
-  Sorry, no results were found.
-</div>
-<div class="suggestion-div">
-  <h4>Suggestions: </h4>
-  <ul style="margin-left:1.3em;margin-bottom:2em">
-    <li>Make sure that all words are spelled correctly.</li>
-    <li>Try more general words.</li>
-    <li>Try different words that mean the same thing.</li></ul>
-</div>
-@endif
+<span class="top-book">A - Z List</span>
 
 <div class="test">
 
@@ -116,7 +94,7 @@
 
   <hr size="20" class="hr-gradient">
 
-  {!! $books->render() !!}
+  {!! $books->links() !!}
   @endif
 
 </div>
