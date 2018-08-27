@@ -24,6 +24,8 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 	Route::get('/books/newly-added', 'LandingPageController@newlyAdded')->name('newly-added');
 
 	Route::get('/books/a-z-list', 'LandingPageController@azList')->name('a-z-list');
+
+	Route::get('/books/course/{id}', 'LandingPageController@course')->name('course');
     
 	//Auth::routes();
 	// Authentication Routes...
@@ -64,7 +66,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 	Route::post('/book/print-selected-books', 'BookController@printSelectedBookss')->name('print-selected-books');
 
 	Route::get('/book/printbooks', 'BookController@printBooks')->name('books.print');
-	Route::post('/book/printselectedbooks', 'BookController@printSelectedBooks')->name('qr.selected.print');
+	// Route::post('/book/printselectedbooks', 'BookController@printSelectedBooks')->name('qr.selected.print');
 	Route::resource('/book', 'BookController', ['except' => ['show']]);
 	Route::resource('/course', 'CourseController', ['except' => ['show']]);
 	Route::get('/book/{id}', 'PublicBookController@show')->name('book.show');

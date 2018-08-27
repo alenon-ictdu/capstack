@@ -52,30 +52,8 @@
                         <a href="{{ route('backup.book') }}" class="btn btn-cyan btn-sm"><i class="fa fa-download"></i> Backup Database</a>
                         <a href="#" class="btn btn-sm btn-cyan" onclick="printContent('all-books')"><i class="fa fa-print"></i> Print Books Data</a>
                         <a href="{{ route('select-books') }}" style="float:right" class="btn btn-sm btn-dark">Select a qr to print</a>
-                        <button style="float:right" class="btn btn-sm btn-outline-dark" form="qr_print_form" formaction="{{ route('qr.selected.print') }}"><i class="fa fa-print"></i> Print</button>
-                          <form id="qr_print_form" method="POST" style="float:right; margin-right: 5px;">
-                            {{ csrf_field() }}
-                            <div class="multiselect">
-                              <div class="selectBox" onclick="showCheckboxes()">
-                                <select class="form-control input-sm" style="height: 30px;">
-                                  <option>Select a QR to print</option>
-                                </select>
-                                <div class="overSelect"></div>
-                              </div>
-                              <div id="checkboxes">
-                                  @foreach($allBooks as $book)
-                                    <label for="{{ 'book'.$book->id }}">
-                                      <input type="checkbox" id="{{ 'book'.$book->id }}" name="{{ $book->id }}" value="{{ $book->id }}" /> {{ $book->id.'. ' }} {{ $book->title }}
-                                    </label>
-                                  @endforeach
-                              </div>
-                            </div>
-                          </form>
-                        
                         <a href="{{ route('books.print') }}" class="btn btn-cyan btn-sm"><i class="fa fa-print"></i> Print All QR</a>
-
                         <a href="{{ route('exportbooks') }}" class="btn btn-cyan btn-sm"><i class="fa fa-download"></i> Export Records</a>
-                                      
                 </div>
 
                 <div class="border-top">

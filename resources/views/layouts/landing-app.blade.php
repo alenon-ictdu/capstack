@@ -53,9 +53,9 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">COURSES
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="#">BSIT</a></li>
-                      <li><a href="#">BSCS</a></li>
-                      <li><a href="#">MIT</a></li>
+                      @foreach($allCourses as $row)
+                      <li><a href="{{ route('course', $row->id) }}">{{ $row->name }}</a></li>
+                      @endforeach
                     </ul>
                   </li> 
                 </ul>

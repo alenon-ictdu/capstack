@@ -4,6 +4,7 @@ namespace ICTDUInventory\Http\Controllers;
 
 use Illuminate\Http\Request;
 use ICTDUInventory\Book;
+use ICTDUInventory\Course;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -115,5 +116,15 @@ class LandingPageController extends Controller
     	$books = Book::orderBy('title', 'asc')->paginate(8);
     	return view('a-z-list')
     			->with('books', $books);
+    }
+
+    public function course($id) {
+    	$books = Book::where('course_id', $id)->paginate(8);
+    	$course = Course::find($id);
+    	$courseName = $course->name;
+
+    	return view('course')
+    			->with('books', $books)
+    			->with('courseName', $courseName);
     }
 }
