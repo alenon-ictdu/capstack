@@ -40,7 +40,7 @@
         <img src="{{ asset('images/spcf-property.png') }}" width="300" style="border-bottom: 1px solid black; padding-bottom: 5px;">
         
         <ul class="list-inline" >
-            <div style="float:left;"><img src="data:image/png;base64, {{base64_encode(QrCode::format('png')->size(100)->generate(url('book/').'/'.$book->id))}} "></div>
+            <div style="float:left;"><img src="data:image/png;base64, {{base64_encode(QrCode::format('png')->size(100)->generate($book->id))}} "></div>
             <div style="display: inline-block; margin-top: 28px;">
                 {{-- <h1 style="font-size: 12px;">ID: {{ $book }}</h1> --}}
                 <strong>ID No: </strong>{{$book->id}}<br>
