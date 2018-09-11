@@ -66,19 +66,15 @@
 	    {{ csrf_field() }}
 	    	<input type="hidden" name="book_id" value="{{ $book->id }}">
 	          <div class="form-group">
-	              <label for="firstname">Firstname</label>
-	              <input type="text" id="firstname" class="form-control input-sm" name="firstname" value="{{ old('firstname') }}" required data-parsley-maxlength="255" data-parsley-required-message="Firstname is required">
-	          </div>
-	          <div class="form-group">
-	              <label for="lastname">Lastname</label>
-	              <input type="text" id="lastname" class="form-control input-sm" name="lastname" value="{{ old('lastname') }}" required data-parsley-maxlength="255" data-parsley-required-message="Lastname is required">
+	              <label for="firstname">Name</label>
+	              <input type="text" id="name" class="form-control input-sm" name="name" value="{{ old('name') }}" required data-parsley-maxlength="255" data-parsley-required-message="Name is required">
 	          </div>
 	          <div class="form-group">
 	              <label for="address">Address</label>
-	              <input type="text" id="address" class="form-control input-sm" name="address" value="{{ old('address') }}" required data-parsley-maxlength="255" data-parsley-required-message="Address is required">
+	              <input type="text" id="address" class="form-control input-sm" name="address" value="{{ old('address') }}" >
 	          </div>
 	          <div class="form-group">
-	              <label for="contact">Contact</label>
+	              <label for="contact">Contact No. or Email</label>
 	              <input type="text" id="contact" class="form-control input-sm" name="contact" value="{{ old('contact') }}" required data-parsley-maxlength="25" data-parsley-required-message="Contact is required">
 	          </div>
 	          <div class="form-group">

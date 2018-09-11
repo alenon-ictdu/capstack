@@ -214,7 +214,7 @@
 
                             $("#qr_content").append(htmlData);
                             new QRCode(document.getElementById("qr"+i), {
-                                text: data[i]['id'],
+                                text: '{ id : '+data[i]['id']+ ' }',
                                 width: 80,
                                 height: 80
                             });

@@ -68,11 +68,12 @@
         </dl>
         <div class="border-top" style="margin-bottom: 10px;"></div>
         <dl class="dl-horizontal">
-          <label>Available:</label> @if($book->availability == 1)
+          {{-- <label>Available:</label> @if($book->availability == 1)
                                         <i style="color: #28b779;" class="fas fa-check"></i>
                                         @else
                                         <i style="color: #da542e;" class="fas fa-times"></i>
-                                        @endif
+                                        @endif --}}
+            <label>Quantity :</label> {{ $book->quantity }}
         </dl>
         <dl class="dl-horizontal">
           <label>CD:</label> @if($book->with_cd == 1)

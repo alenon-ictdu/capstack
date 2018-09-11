@@ -82,7 +82,8 @@ class BookController extends Controller
         $book->author = $request->author;
         $book->year_published = $request->year_published;
         $book->course_id = $request->course;
-        $book->availability = $request->has('available');
+        // $book->availability = $request->has('available');
+        $book->quantity = $request->quantity;
         $book->with_cd = $request->has('cd');
         if($request->hasFile('bookpic')){
                 $image = $request->file('bookpic');
@@ -149,7 +150,8 @@ class BookController extends Controller
         $book->author = $request->author;
         $book->year_published = $request->year_published;
         $book->course_id = $request->course;
-        $book->availability = $request->has('available');
+        // $book->availability = $request->has('available');
+        $book->quantity = $request->quantity;
         $book->with_cd = $request->has('cd');
         if($request->hasFile('bookpic')){
                 $image = $request->file('bookpic');
@@ -201,7 +203,8 @@ class BookController extends Controller
         $book->author = $request->author;
         $book->year_published = $request->year_published;
         $book->course_id = $request->course;
-        $book->availability = $request->has('available');
+        // $book->availability = $request->has('available');
+        $book->quantity = $request->quantity;
         $book->with_cd = $request->has('cd');
 
 
@@ -239,7 +242,8 @@ class BookController extends Controller
         $book->author = $request->author;
         $book->year_published = $request->year_published;
         $book->course_id = $request->course;
-        $book->availability = $request->has('available');
+        // $book->availability = $request->has('available');
+        $book->quantity = $request->quantity;
         $book->with_cd = $request->has('cd');
         if($request->hasFile('bookpic')){
                 $image = $request->file('bookpic');
@@ -306,7 +310,7 @@ class BookController extends Controller
         $courses = Course::all();
         $book = Book::find($id);
 
-        if ($book->availability == 0) {
+        if ($book->quantity == 0) {
           Session::flash('borrow_warning', $book->id);
           return redirect()->route('home');
         }
@@ -319,10 +323,7 @@ class BookController extends Controller
 
         $this->validate($request, [
             'book_id'                   =>               'required|numeric',
-            'firstname'                 =>               'required|min:3',
-            'lastname'                  =>               'required|min:3',
-            'address'                   =>               'required',
-            // 'contact'                   =>               'required|numeric',
+            'name'                 =>               'required|min:3',
             'deadline'                  =>               'required|date|after:yesterday'
         ]);
 
@@ -330,15 +331,15 @@ class BookController extends Controller
         $book = Book::find($request->book_id);
 
         $borrower->book_id = $request->book_id;
-        $borrower->firstname = $request->firstname;
-        $borrower->lastname = $request->lastname;
+        $borrower->name = $request->name;
         $borrower->address = $request->address;
         $borrower->contact = $request->contact;
         $borrower->deadline = $request->deadline;
 
         $borrower->save();
 
-        $book->availability = 0;
+        // $book->availability = 0;
+        $book->quantity = $book->quantity - 1;
 
         $book->save();
 
@@ -360,7 +361,7 @@ class BookController extends Controller
         $book = Book::find($book_id);
 
         $borrower->delete();
-        $book->availability = 1;
+        $book->quantity = $book->quantity + 1;
         $book->save();
 
         return redirect()->back();
@@ -381,10 +382,7 @@ class BookController extends Controller
     public function updateBorrowBook(Request $request, $id) {
         $this->validate($request, [
             'book_id'                   =>               'required|numeric',
-            'firstname'                 =>               'required|min:3',
-            'lastname'                  =>               'required|min:3',
-            'address'                   =>               'required',
-            'contact'                   =>               'required|numeric',
+            'name'                 =>               'required|min:3',
             'deadline'                  =>               'required|date|after:yesterday'
         ]);
 
@@ -392,31 +390,26 @@ class BookController extends Controller
         $book = Book::find($request->book_id);
 
         $borrower->book_id = $request->book_id;
-        $borrower->firstname = $request->firstname;
-        $borrower->lastname = $request->lastname;
+        $borrower->name = $request->name;
         $borrower->address = $request->address;
         $borrower->contact = $request->contact;
         $borrower->deadline = $request->deadline;
 
         $borrower->save();
 
-        $book->availability = 0;
-
-        $book->save();
-
         Session::flash('isNew', $borrower->id);
         Session::flash('success', 'Changes successfully saved.');
         return redirect()->route('view.borrowers');
     }
 
-    public function bookBorrowed(){
+    /*public function bookBorrowed(){
         $books = Book::where('availability', '=', 0)
             ->orderBy('id', 'desc')->paginate(10);
 
         return view('books.borrowed')
             ->with('books', $books);
 
-    }
+    }*/
 
 
 

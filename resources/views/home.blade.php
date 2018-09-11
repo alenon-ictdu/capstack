@@ -67,7 +67,8 @@
                               <th style="width:10%">Author(s)</th>
                               <th style="width:10%">Year Published</th>
                               <th>Course</th>
-                              <th>Availability</th>
+                              <th>Quantity</th>
+                              {{-- <th>Availability</th> --}}
                               <th>CD</th>
                               <th>QR Code</th>
                               <th style="width:25%" >Actions</th>
@@ -82,12 +83,13 @@
                                       <td title="{{ $book->author }}">{{ (strlen($book->author) >= 30) ? substr($book->author, 0, 30). '...' : $book->author }}</td>
                                       <td>{{ $book->year_published }}</td>    
                                       <td>{{ $book->course['name'] }}</td>
-                                      <td>@if($book->availability == 1)
+                                      {{-- <td>@if($book->availability == 1)
                                           <i style="color: #28b779;" class="fas fa-check"></i>
                                           @else
                                           <i style="color: #da542e;" class="fas fa-times"></i>
                                           @endif
-                                      </td>
+                                      </td> --}}
+                                      <td>{{ $book->quantity }}</td>
                                       <td>@if($book->with_cd == 1)
                                           <i style="color: #28b779;" class="fas fa-check"></i>
                                           @else
@@ -99,7 +101,7 @@
                                       </td>
                                       <td>
                                           <a href="{{ route('book.show', $book->id) }}" class="btn btn-outline-dark btn-xs"><i class="fa fa-eye"></i> View</a>
-                                          @if($book->availability == 1)
+                                          @if($book->quantity >= 1)
                                             <a href="{{ route('view.borrow.book', $book->id) }}" class="btn btn-outline-dark btn-xs"><i class="fa fa-book"></i> Borrow</a>
                                           @endif
                                           <a href="{{ route('book.edit', $book->id) }}" class="btn btn-outline-dark btn-xs"><i class="fa fa-edit"></i> Edit</a>
@@ -119,7 +121,7 @@
                                             <div class="modal-body" >
                                               <div class="row">
                                                   <div class="col-md-offset-2">
-                                                      <img src="data:image/png;base64, {{base64_encode(QrCode::format('png')->size(480)->generate($book->id))}} ">
+                                                      <img src="data:image/png;base64, {{base64_encode(QrCode::format('png')->size(480)->generate('{ id : '.$book->id. ' }'))}} ">
                                                   </div>
                                               </div>
                                             </div>
@@ -130,7 +132,7 @@
                                                   <img src="{{ asset('images/spcf-property.png') }}" width="300" style="border-bottom: 1px solid black; padding-bottom: 5px;">
                                                   
                                                   <ul class="list-inline" >
-                                                      <div style="float:left;"><img src="data:image/png;base64, {{base64_encode(QrCode::format('png')->size(100)->generate($book->id))}} "></div>
+                                                      <div style="float:left;"><img src="data:image/png;base64, {{base64_encode(QrCode::format('png')->size(100)->generate('{ id : '.$book->id. ' }'))}} "></div>
                                                       <div style="display: inline-block; margin-top: 28px;">
                                                           {{-- <h1 style="font-size: 12px;">ID: {{ $book }}</h1> --}}
                                                           <strong>ID No: </strong>{{$book->id}}<br>

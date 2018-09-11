@@ -39,21 +39,19 @@
 		<table class="table table-hover table-striped" id="indextable">
 			<thead>
 				<tr>
-					<th style="width:11%; ">Firstname</th>
-					<th style="width:11%; ">Lastname</th>
+					<th style="width:11%; ">Name</th>
 					<th style="width:11%; ">Address</th>
 					<th style="width:11%; ">Contact</th>
 					<th style="width:30%; ">Book</th>
 					<th style="width:11%; ">Date Borrowed</th>
 					<th style="width:11%; ">Due Date</th>
-					<th>Actions</th>
+					<th style="width:11%; ">Actions</th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach($borrowers as $row)
-					<tr @if(session('isNew') == $row->id) style="font-weight: bold; color: #ff890fe6;" @endif>
-						<td>{{$row->firstname}}</td>
-						<td>{{$row->lastname}}</td>
+					<tr @if(session('isNew') == $row->id) style="font-weight: bold; color: #27a9e3;" @endif>
+						<td>{{$row->name}}</td>
 						<td>{{$row->address}}</td>
 						<td>{{$row->contact }}</td>
 						<td>{{$row->book->title}}</td>

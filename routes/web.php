@@ -52,7 +52,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 
 	Route::get('/book/borrow/{id}', 'BookController@viewBorrowBook')->name('view.borrow.book');
 	Route::post('/book/borrow', 'BookController@borrowBook')->name('borrow.book');
-	Route::get('/borrowedbooks', 'BookController@bookBorrowed')->name('book.borrowed');
+	// Route::get('/borrowedbooks', 'BookController@bookBorrowed')->name('book.borrowed');
 	/*Route::get('/book/borrowers/search', 'BookController@searchBorrowers')->name('search.borrowers');*/
 
 	Route::get('/book/penalty', 'BookController@penalty')->name('book.penalty');

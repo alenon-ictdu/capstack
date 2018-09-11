@@ -53,19 +53,9 @@
                         </a>
                     </div>
                      <!-- Column -->
-                    <div class="col-md-6 col-lg-2 col-xlg-3">
-                        <a href="{{ route('book.borrowed') }}">
-                        <div class="card card-hover">
-                            <div class="box bg-warning text-center">
-                                <h1 class="font-light text-white"><i class="fas fa-address-book"></i></h1>
-                                <h5 class="text-white">{{ $borrowedBooks }}</h5>
-                                <h6 class="text-white">Total Borrowed Books</h6>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
+                    
                     <!-- Column -->
-                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                    <div class="col-md-6 col-lg-4 col-xlg-3">
                         <a href="{{ route('view.borrowers') }}">
                         <div class="card card-hover">
                             <div class="box bg-danger text-center">
@@ -120,7 +110,7 @@
                             <div class="comment-widgets scrollable" style="height: 435px;">
                                 <!-- Comment Row -->
                                 @foreach($books as $row)
-                                    @if($row->availability == 0)
+                                    @if($row->quantity == 0)
                                         <div class="d-flex flex-row comment-row m-t-0">
                                             <div class="p-2"></div>
                                             <div class="comment-text w-100">

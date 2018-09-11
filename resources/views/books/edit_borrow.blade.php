@@ -65,16 +65,12 @@
 	    
 	    	<input type="hidden" name="book_id" value="{{ $borrower->book_id }}">
 	          <div class="form-group">
-	              <label for="firstname">Firstname</label>
-	              <input type="text" id="firstname" class="form-control input-sm" name="firstname" value="{{ $borrower->firstname }}" required data-parsley-maxlength="255" data-parsley-required-message="Firstname is required">
-	          </div>
-	          <div class="form-group">
-	              <label for="lastname">Lastname</label>
-	              <input type="text" id="lastname" class="form-control input-sm" name="lastname" value="{{ $borrower->lastname }}" required data-parsley-maxlength="255" data-parsley-required-message="Lastname is required">
+	              <label for="firstname">Name</label>
+	              <input type="text" id="name" class="form-control input-sm" name="name" value="{{ $borrower->name }}" required data-parsley-maxlength="255" data-parsley-required-message="Name is required">
 	          </div>
 	          <div class="form-group">
 	              <label for="address">Address</label>
-	              <input type="text" id="address" class="form-control input-sm" name="address" value="{{ $borrower->address }}" required data-parsley-maxlength="255" data-parsley-required-message="Address is required">
+	              <input type="text" id="address" class="form-control input-sm" name="address" value="{{ $borrower->address }}" data-parsley-maxlength="255" data-parsley-required-message="Address is required">
 	          </div>
 	          <div class="form-group">
 	              <label for="contact">Contact</label>

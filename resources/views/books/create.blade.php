@@ -67,6 +67,10 @@
                       @endforeach
               </select>
           </div>
+          <div class="form-group">
+              <label for="quantity">Quantity</label>
+              <input type="text" id="quantity" class="form-control" name="quantity" required>
+          </div>
           <div class="form-group row">
               <label class="col-md-3">File Upload</label>
               <div class="col-md-9">
@@ -77,7 +81,7 @@
                   </div>
               </div>
           </div>
-          <div class="form-group row">
+          {{-- <div class="form-group row">
               <label class="col-md-3">Available</label>
               <div class="col-md-9">
                   <div class="custom-control custom-checkbox mr-sm-2">
@@ -85,7 +89,7 @@
                       <label class="custom-control-label" for="available">Yes</label>
                   </div>
               </div>
-          </div>
+          </div> --}}
           <div class="form-group row">
               <label class="col-md-3">Cd</label>
               <div class="col-md-9">
